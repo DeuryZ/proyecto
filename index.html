@@ -8,23 +8,31 @@
     <script src="main.js" type="module" defer></script>
 </head>
 <body>
+<header></header>
+<main>
     <form>
-        <input type="number" name="valor" placeholder="Ingrese el monto" required>
-        <input type="radio" name="caja" value="ingreso"><label>Ingreso</label>
-        <input type="radio" name="caja" value="egreso"><label>Egreso</label>
-        <input type="submit" value="Calcular">
-        <input type="submit" value="Editar">
+        <input type="number" name="amount" placeholder="Put the value" required>
+        <input type="radio" name="type" value="in"checked><label>Income</label>
+        <input type="radio" name="type" value="out"><label>Expense</label>
+        <input type="submit" value="Cal">
     </form>
-    <table border="solid">
+    <div>
+        <input type="button" value="Reset" id="reset">
+        <input type="button" value="Delete" id="delete">
+        <input type="button" value="Update" id="update">
+    </div>
+    <div>    <table border="solid">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Valor</th>
-                <th>Tipo</th>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody id="myData">
         </tbody>
     </table>
+    </div>
+</main>
 </body>
 </html>
