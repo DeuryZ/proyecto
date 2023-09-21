@@ -32,11 +32,12 @@ myForm.addEventListener("submit", async (e) => {
 
 myDelete.addEventListener("click", async (e) => {
     e.preventDefault();
+    let res = await (await fetch("https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla")).json();
     let config = {
         method: "DELETE"
     };
-    let eliminate ="https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/"+5
-    let res = await (await fetch(eliminate, config)).json();
+    let eliminate ="https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/"+res[0].id
+    res = await (await fetch(eliminate, config)).json();
     console.log(res);
 })
 
