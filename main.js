@@ -14,18 +14,12 @@ addEventListener("DOMContentLoaded", async () => {
         <td><button type="button" class="update" data-id="${res[i].id}">Update</button></td>
         </tr>
     `);}
-
-    
     let myDelete = document.querySelectorAll(".delete");
-    let myUpdate = document.querySelectorAll(".update");
-    
-
     myDelete.forEach(button => {
         button.addEventListener("click", async (e) => {
             e.preventDefault();
             const id = e.target.getAttribute("data-id");
             let eliminate = `https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`;
-            
             let config = {
                 method: "DELETE"
             };
@@ -37,22 +31,42 @@ addEventListener("DOMContentLoaded", async () => {
     let myReset = document.querySelector("#reset");
     if (myReset) {
         myReset.addEventListener("click", async (e) => {
-            // const confirmation = confirm("¿Estás seguro de que deseas eliminar todos los elementos?");
-            // if (confirmation) {
-            //     let config = {
-            //         method: "POST",
-            //         headers: { "Content-Type": "application/json" },
-            //         body: JSON.stringify(data)
-            //     };
-            //     for (let i = 1; i < res.length + 1; i++) {
-            //         let deleteResponse = await fetch(`https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${res[i].id}`, config);
-            //         console.log(deleteResponse);
-            //     }
-            //     location.reload();
-            // }
-            curl -X DELETE "https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/";
+            const confirmation = confirm("¿Estás seguro de que deseas eliminar todos los elementos?");
+            if (confirmation) {
+                let config = {
+                    method: "DELETE"
+                };
+                for (let i = 0; i < res.length; i++) {
+                    let deleteResponse = await fetch(`https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${res[i].id}`, config);
+                    console.log(deleteResponse);
+                    console.log(res[i].id)
+                }
+            }
+            location.reload();
         });
     }
+    let myUpdate = document.querySelectorAll(".update");
+    myUpdate.forEach(button => {
+        button.addEventListener("click", async (e) => {
+            e.preventDefault();
+            const id = e.target.getAttribute("data-id");
+            const amount = document.querySelector("#amount").value;
+            const type = document.querySelector("input[name='type']:checked").value; 
+            let eliminate = `https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`;
+            let config = {
+                method: "DELETE"
+            };
+            let res = await fetch(eliminate, config);
+            console.log(res);
+            let update = `https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`;
+            config = {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, amount, type })
+            }
+            res = await fetch(update, config);
+        })
+    })
 });
 
 myForm.addEventListener("submit", async (e) => {
