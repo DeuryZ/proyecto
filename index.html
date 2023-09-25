@@ -9,30 +9,36 @@
 </head>
 <body>
 <header></header>
-<main>
-    <form>
-        <input type="number" name="amount" placeholder="Put the value" required>
-        <input type="radio" name="type" value="in"checked><label>Income</label>
-        <input type="radio" name="type" value="out"><label>Expense</label>
-        <input type="submit" value="Cal">
-    </form>
-    <div>
-        <input type="button" value="reset" id="reset">
-        <input type="button" value="delete" class="delete">
-        <input type="button" value="update" class="update">
-    </div>
-    <div>    <table border="solid">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Amount</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody id="myData">
-        </tbody>
-    </table>
-    </div>
-</main>
+    <main>
+        <form class="contMain" >
+            <input type="number" name="amount" placeholder="Put the value" required>
+            <input type="radio" name="type" value="in"checked><label>Income</label>
+            <input type="radio" name="type" value="out"><label>Expense</label>
+            <input type="submit" value="Cal">
+        </form>
+        <div class="contMain">
+            <input type="button" value="Reset" id="reset">
+        </div>
+        <div class="contUpdate">
+            <form class="formSend">
+                <input type="number" name="amount" placeholder="Put the value" required>
+                <input type="radio" name="type" value="in"checked><label>Income</label>
+                <input type="radio" name="type" value="out"><label>Expense</label>
+                <input type="submit" value="Send" class="send" data-id="${res[i].id}">
+            </form>
+        </div>
+        <div>    <table border="solid">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="myData">
+            </tbody>
+        </table>
+        </div>
+    </main>
 </body>
 </html>

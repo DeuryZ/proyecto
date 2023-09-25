@@ -46,27 +46,37 @@ addEventListener("DOMContentLoaded", async () => {
         });
     }
     let myUpdate = document.querySelectorAll(".update");
-    myUpdate.forEach(button => {
-        button.addEventListener("click", async (e) => {
-            e.preventDefault();
-            const id = e.target.getAttribute("data-id");
-            const amount = document.querySelector("#amount").value;
-            const type = document.querySelector("input[name='type']:checked").value; 
-            let eliminate = `https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`;
-            let config = {
-                method: "DELETE"
-            };
-            let res = await fetch(eliminate, config);
-            console.log(res);
-            let update = `https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`;
-            config = {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, amount, type })
-            }
-            res = await fetch(update, config);
+    let myFormSend = document.querySelector(".formSend"); 
+    if (myUpdate){
+        myUpdate.forEach((button)=>{
+            button.addEventListener("click", async (e) => {
+                e.preventDefault();
+                document.querySelector(".contUpdate").style.display = "block";
+                document.querySelector(".contMain").style.display = "none";
+                const id = e.target.getAttribute("data-id");
+                let mySend = document.querySelector(".send");
+                if (mySend){
+                    myFormSend.addEventListener("submit", async (e) => {
+                        e.preventDefault();
+                        const data = Object.fromEntries(new FormData(e.target));
+                        const { amount } = data;
+                        data.amount = Number(amount);
+                        let config = {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(data)
+                        };
+                        let res = await (await fetch(`https://650ad5b7dfd73d1fab08fcc0.mockapi.io/tabla/tabla/${id}`, config)).json();
+                        console.log(res);
+                        document.querySelector(".contUpdate").style.display = "none";
+                        document.querySelector(".contMain").style.display = "block";
+                        location.reload();
+                    })
+                }
+            })
         })
-    })
+    }
+    
 });
 
 myForm.addEventListener("submit", async (e) => {
