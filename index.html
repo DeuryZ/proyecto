@@ -10,38 +10,43 @@
 <body>
 <header></header>
     <main>
-        <form class="contMain" >
-            <input type="number" name="amount" placeholder="Put the value" required>
-            <input type="radio" name="type" value="in"checked><label>Income</label>
-            <input type="radio" name="type" value="out"><label>Expense</label>
-            <input type="submit" value="Cal">
-        </form>
-        <div class="contResult">
-            <p></p>
-        </div>
-        <div class="contMain">
-            <input type="button" value="Reset" id="reset">
-        </div>
-        <div class="contUpdate">
-            <form class="formSend">
+        <section>
+            <form class="contMain" >
                 <input type="number" name="amount" placeholder="Put the value" required>
                 <input type="radio" name="type" value="in"checked><label>Income</label>
                 <input type="radio" name="type" value="out"><label>Expense</label>
-                <input type="submit" value="Send" class="send" data-id="${res[i].id}">
+                <input type="submit" value="Cal">
             </form>
-        </div>
-        <div>    <table border="solid">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Amount</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody id="myData">
-            </tbody>
-        </table>
-        </div>
+            <div class="contResult">
+                <p></p>
+            </div>
+            <div class="contMain">
+                <input type="button" value="Reset" id="reset">
+            </div>
+            <div class="contUpdate">
+                <form class="formSend">
+                    <input type="number" name="amount" placeholder="Put the value" required>
+                    <input type="radio" name="type" value="in"checked><label>Income</label>
+                    <input type="radio" name="type" value="out"><label>Expense</label>
+                    <input type="submit" value="Send" class="send" data-id="${res[i].id}">
+                </form>
+            </div>
+            <div>    
+                <table border="solid">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody id="myData">
+                </tbody>
+            </table>
+            </div>
+        </section>
     </main>
 </body>
 </html>
